@@ -1,43 +1,53 @@
-#include<iostream>
+ï»¿#include<iostream>
 #include "Player.h"
 #include "Goblin.h"
+#include "Slime.h"
+#include "Boar.h"
 
 using namespace std;
 
 #define IS_VALID(A) (A != nullptr)
 #define SAFE_DELETE(A) if(A) { delete A; A = nullptr; }
-//if(A) ÀÌ°Ô °ªÀÌ ÀÖ´ÂÁö È®ÀÎ 1 
-// A¿¡ °ªÀÌ ÀÖÀ¸¸é true ÀÌ°í ¾øÀ¸¸é false 
-// delete A »èÁ¦ 2
-// A = nullptr »èÁ¦ÇØµµ ¾²·¹±â°ª ÀÖÀ»¼ö ÀÖ¾î ÃÊ±âÈ­ 3
+//if(A) ì´ê²Œ ê°’ì´ ìˆëŠ”ì§€ í™•ì¸ 1 
+// Aì— ê°’ì´ ìˆìœ¼ë©´ true ì´ê³  ì—†ìœ¼ë©´ false 
+// delete A ì‚­ì œ 2
+// A = nullptr ì‚­ì œí•´ë„ ì“°ë ˆê¸°ê°’ ìˆì„ìˆ˜ ìˆì–´ ì´ˆê¸°í™” 3
 
 #define _SAFE_DELETE(Player)	delete Player; \
 								Player = nullptr; \
 								if (Player) \
 								{ \
-									cout << "Player »ç¿ë" << endl; \
+									cout << "Player ì‚¬ìš©" << endl; \
 								} \
 								else \
 								{ \
-									cout << "Player »ç¿ë ¸øÇÔ" << endl; \
+									cout << "Player ì‚¬ìš© ëª»í•¨" << endl; \
 								}
 
 
 int main() {
 
 	FPlayer* Player = new FPlayer();
+	Player->Move();
 	FGoblin* Goblin = new FGoblin();
+	Goblin->Move();
+	FSlime* Slime = new FSlime();
+	Slime->Move();
+	FBoar* Boar = new FBoar();
+	Boar->Move();
 
 	bool IsRuning = true;
 
-	while (IsRuning)
-	{
-		Player->Move();
-		Goblin->Move();
-	}
+//	while (IsRuning)
+//	{
+//		Player->Move();
+//		Goblin->Move();
+//	}
 
 	SAFE_DELETE(Player);
 	SAFE_DELETE(Goblin);
+	SAFE_DELETE(Slime);
+	SAFE_DELETE(Boar);
 
 
 
